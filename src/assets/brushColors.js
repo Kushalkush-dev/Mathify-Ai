@@ -1,12 +1,10 @@
-const Colors=[
-  "#ffffff", //white
-  "#F54927", //orange
-  "#38E312", //green
-  "#12C7E3", //aqua
-  "#0D35FF" //purple
-  
-
-]
-
+const Colors = [
+  "#FF0000", // Red
+  "#00FF00", // Green
+  "#0000FF", // Blue
+  "#FFFF00", // Yellow
+  "#FFFFFF", // White
+  "#000000"  // Black
+];
 
 export default Colors;

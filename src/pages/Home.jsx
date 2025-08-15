@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import Colors from '../assets/brushColors'
+import Colors from '../assets/brushColors.js'
 
 import { ColorSwatch, Group } from '@mantine/core';
 
@@ -12,6 +12,7 @@ const Home =() => {
 
   const [isdrawing, setisdrawing] = useState(false);
   const [reset, setreset] = useState(false)
+  const [brushcolor, setbrushcolor] = useState("white")
 
 
   useEffect(()=>{
@@ -34,6 +35,7 @@ const Home =() => {
         canvas.height = rect.height;
         ctx.lineCap='round';
         ctx.lineWidth=3
+       
       }
     }
   },[])
@@ -67,7 +69,7 @@ const Home =() => {
       const ctx=canvas.getContext('2d');
       if(ctx){
         const rect = canvas.getBoundingClientRect();
-        ctx.strokeStyle="white";
+        ctx.strokeStyle=brushcolor;
         ctx.lineTo(e.clientX-rect.left, e.clientY-rect.top);
         ctx.stroke();
 
@@ -92,7 +94,7 @@ const Home =() => {
   return(
   <>
 
-  <div>
+  <div className='grid grid-cols-3 gap-2'>
     <Button onClick={()=>{
       setreset(true)
     }}
@@ -100,6 +102,16 @@ const Home =() => {
     variant="default"
     color="black"
     >Reset</Button>
+    
+    <Group className='z-50'>
+      {Colors.map((bcolor)=>(
+        <ColorSwatch
+          color={bcolor}
+          key={bcolor}
+          style={{ border: '2px solid white', cursor: 'pointer' }}
+          onClick={()=>{setbrushcolor(bcolor)}}/>
+      ))}
+    </Group>
 
     <Button
     className="bg-black text-white"
@@ -109,7 +121,7 @@ const Home =() => {
   </div>
 
     <div className='w-full h-screen justify-between items-center'>
-      <canvas ref={canvasRef} id='canvas' className='w-[50vw] h-[50vw] '
+      <canvas ref={canvasRef} id='canvas' className='w-full h-full z-0'
             onMouseDown={startDrawing}
             onMouseUp={stopDrawing}
             onMouseMove={draw}></canvas>
