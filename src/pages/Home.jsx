@@ -4,6 +4,8 @@ import Colors from '../assets/brushColors'
 
 import { ColorSwatch, Group } from '@mantine/core';
 
+import { Button } from '@/components/ui/button';
+
 const Home =() => {
 
   const canvasRef = useRef(null)
@@ -18,7 +20,7 @@ const Home =() => {
       setreset(false)
     }
     
-  })
+  },[reset])
 
 
   useEffect(()=>{
@@ -78,6 +80,9 @@ const Home =() => {
     const canvas=canvasRef.current;
     if(canvas){
       const ctx=canvas.getContext('2d')
+      if(ctx){
+        ctx.clearRect(0,0,canvas.width,canvas.height)
+      }
     }
   }
 
@@ -85,13 +90,31 @@ const Home =() => {
 
 
   return(
+  <>
+
+  <div>
+    <Button onClick={()=>{
+      setreset(true)
+    }}
+    className="bg-black text-white"
+    variant="default"
+    color="black"
+    >Reset</Button>
+
+    <Button
+    className="bg-black text-white"
+    variant="default"
+    color="black"
+    >Calculate</Button>
+  </div>
+
     <div className='w-full h-screen justify-between items-center'>
       <canvas ref={canvasRef} id='canvas' className='w-[50vw] h-[50vw] '
             onMouseDown={startDrawing}
             onMouseUp={stopDrawing}
             onMouseMove={draw}></canvas>
     </div>
-    
+  </>    
   );
 
 
