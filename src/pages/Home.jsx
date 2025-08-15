@@ -1,11 +1,24 @@
 import React, { useEffect, useRef, useState } from 'react';
 
+import Colors from '../assets/brushColors'
+
+import { ColorSwatch, Group } from '@mantine/core';
 
 const Home =() => {
 
   const canvasRef = useRef(null)
 
   const [isdrawing, setisdrawing] = useState(false);
+  const [reset, setreset] = useState(false)
+
+
+  useEffect(()=>{
+    if(reset){
+      clearCanvas()
+      setreset(false)
+    }
+    
+  })
 
 
   useEffect(()=>{
@@ -18,7 +31,7 @@ const Home =() => {
         canvas.width = rect.width;
         canvas.height = rect.height;
         ctx.lineCap='round';
-        ctx.lineWidth=5
+        ctx.lineWidth=3
       }
     }
   },[])
@@ -61,13 +74,24 @@ const Home =() => {
   }
 
 
+  const clearCanvas=()=>{
+    const canvas=canvasRef.current;
+    if(canvas){
+      const ctx=canvas.getContext('2d')
+    }
+  }
+
+
 
 
   return(
-    <canvas ref={canvasRef} id='canvas' className='w-[50vw] h-[50vw] '
+    <div className='w-full h-screen justify-between items-center'>
+      <canvas ref={canvasRef} id='canvas' className='w-[50vw] h-[50vw] '
             onMouseDown={startDrawing}
             onMouseUp={stopDrawing}
             onMouseMove={draw}></canvas>
+    </div>
+    
   );
 
 
