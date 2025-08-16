@@ -211,7 +211,7 @@ const stopDrawingTouch = (e) => {
     <button onClick={eraser} className='bg-blue-400 px-3 text-white'>
       Eraser
     </button>
-    <Group className='z-50'>
+    <Group className=''>
        {Colors.map((color) => (
           <ColorSwatch
             key={color}
