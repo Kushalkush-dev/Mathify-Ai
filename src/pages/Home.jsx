@@ -100,7 +100,7 @@ const Home =() => {
   return(
   <>
 
-  <div className='grid grid-cols-3 gap-2 bg-black'>
+  <div className='flex justify-evenly bg-black'>
     <Button onClick={()=>{
       setreset(true)
     }}
@@ -110,7 +110,7 @@ const Home =() => {
     >Reset</Button>
     
 
-    <button onClick={eraser} className='bg-blue-400 text-white '>
+    <button onClick={eraser} className='bg-blue-400 px-3 text-white'>
       Eraser
     </button>
     <Group className='z-50'>
