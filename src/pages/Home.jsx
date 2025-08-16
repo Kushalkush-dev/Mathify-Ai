@@ -6,6 +6,7 @@ import { ColorSwatch, Group } from '@mantine/core';
 import '@mantine/core/styles.css';
 
 import { Button } from '@/components/ui/button';
+import { MathJax, MathJaxContext } from 'better-react-mathjax';
 
 
 
@@ -16,6 +17,10 @@ const Home =() => {
   const [isdrawing, setisdrawing] = useState(false);
   const [reset, setreset] = useState(false)
   const [brushcolor, setbrushcolor] = useState("white")
+  const [solution, setsolution] = useState('')
+
+
+
 
 
   useEffect(()=>{
@@ -101,6 +106,7 @@ const Calculate= async ()=>{
       })
       const data=await response.json()
       console.log(data.answer);
+      setsolution(data.answer)
         
       } catch (error) {
         console.log("Unable to fetch from api",error);
@@ -197,8 +203,8 @@ const stopDrawingTouch = (e) => {
 
   return(
   <>
-
-  <div className='flex justify-evenly bg-black'>
+  <div>
+    <div className='flex justify-evenly bg-black'>
     <Button onClick={()=>{
       setreset(true)
     }}
@@ -230,6 +236,8 @@ const stopDrawingTouch = (e) => {
     >Calculate</Button>
   </div>
 
+  
+
     <div className='w-full max-h-screen justify-between items-center'>
       <canvas ref={canvasRef} id='canvas' className='w-full min-h-screen overflow-hidden'
             onMouseDown={startDrawing}
@@ -240,6 +248,17 @@ const stopDrawingTouch = (e) => {
             onTouchMove={drawTouch}
             onTouchEnd={stopDrawingTouch}></canvas>
     </div>
+
+    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 
+                bg-red-400 text-white text-xl px-4 py-2 
+                rounded-lg shadow-lg z-50">
+  hello
+</div>
+
+
+  </div>
+
+  
   </>    
   );
 

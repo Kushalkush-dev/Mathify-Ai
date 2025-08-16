@@ -1,9 +1,16 @@
 import { MantineProvider } from "@mantine/core";
 import Home from "./pages/Home";
 import React, { use, useEffect, useState } from 'react'
+import { MathJax, MathJaxContext } from "better-react-mathjax";
 
 
-
+const mathJaxConfig = {
+  loader: { load: ["input/tex", "output/chtml"] },
+  tex: {
+    inlineMath: [["$", "$"], ["\\(", "\\)"]],
+    displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+  },
+};
 
 const App = () => {
 
@@ -11,9 +18,11 @@ const App = () => {
 
   return (
 
-  <MantineProvider>
-     <Home/>
-  </MantineProvider>
+<MantineProvider>
+      <MathJaxContext version={3} config={mathJaxConfig}>
+        <Home />
+      </MathJaxContext>
+    </MantineProvider>
    
   );
 }
