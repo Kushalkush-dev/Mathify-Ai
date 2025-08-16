@@ -255,10 +255,12 @@ const stopDrawingTouch = (e) => {
     </div>
 
     <div className="fixed bottom-4 left-1/2 -translate-x-1/2 
-                bg-red-400 text-white text-xl px-4 py-2 
+                bg-gray-700 text-white text-xl px-4 py-2 
                 rounded-lg shadow-lg z-50">
                   
-      hello
+      <MathJax>
+        {solution}
+      </MathJax>
     </div>
 
 
