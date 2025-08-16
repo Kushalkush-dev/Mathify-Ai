@@ -80,6 +80,9 @@ const Home =() => {
     }
   }
 
+  const eraser = ()=>{
+  setbrushcolor('black')
+  }
 
   const clearCanvas=()=>{
     const canvas=canvasRef.current;
@@ -106,6 +109,10 @@ const Home =() => {
     color="black"
     >Reset</Button>
     
+
+    <button onClick={eraser} className='bg-blue-400 text-white '>
+      Eraser
+    </button>
     <Group className='z-50'>
        {Colors.map((color) => (
           <ColorSwatch
