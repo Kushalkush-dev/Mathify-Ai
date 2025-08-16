@@ -27,6 +27,8 @@ const Home =() => {
   },[reset])
 
 
+
+
   useEffect(()=>{
     const canvas = canvasRef.current;
     if(canvas){
@@ -44,6 +46,7 @@ const Home =() => {
   },[])
 
   const startDrawing = (e)=>{
+    e.preventDefault()
 
     const canvas=canvasRef.current;
     if(canvas){
@@ -61,11 +64,13 @@ const Home =() => {
   }
 
 
-  const stopDrawing = () => {
+  const stopDrawing = (e) => {
+     e.preventDefault();
     setisdrawing(false);
   }
 
   const draw = (e) => {
+    e.preventDefault()
     if(!isdrawing) return;
     const canvas = canvasRef.current;
     if(canvas){
@@ -80,6 +85,36 @@ const Home =() => {
     }
   }
 
+const Calculate= async ()=>{
+  const canvas=canvasRef.current
+  if(canvas){
+    const ctx=canvas.getContext('2d')
+    if(ctx){
+      const img=canvas.toDataURL("image/png")
+
+      try {
+
+        const response=await fetch("http://localhost:7700/matify/resolve",{
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ image: img }),
+      })
+      const data=await response.json()
+      console.log(data.answer);
+        
+      } catch (error) {
+        console.log("Unable to fetch from api",error);
+        
+        
+      }
+    
+      
+    }
+  }
+}
+
+
+
   const eraser = ()=>{
   setbrushcolor('black')
   }
@@ -93,6 +128,69 @@ const Home =() => {
       }
     }
   }
+
+
+
+
+
+
+// Helper to get touch position relative to canvas
+const getTouchPos = (canvas, touch) => {
+  const rect = canvas.getBoundingClientRect();
+  return {
+    x: touch.clientX - rect.left,
+    y: touch.clientY - rect.top,
+  };
+};
+
+// Start drawing on touch
+const startDrawingTouch = (e) => {
+  e.preventDefault();
+  const canvas = canvasRef.current;
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  const touch = e.touches[0];
+  const pos = getTouchPos(canvas, touch);
+
+  ctx.beginPath();
+  ctx.moveTo(pos.x, pos.y);
+  setisdrawing(true);
+};
+
+// Draw on touch move
+const drawTouch = (e) => {
+  e.preventDefault();
+  if (!isdrawing) return;
+  const canvas = canvasRef.current;
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  const touch = e.touches[0];
+  const pos = getTouchPos(canvas, touch);
+
+  ctx.strokeStyle = brushcolor;
+  ctx.lineTo(pos.x, pos.y);
+  ctx.stroke();
+};
+
+// Stop drawing on touch end
+const stopDrawingTouch = (e) => {
+  e.preventDefault();
+  setisdrawing(false);
+};
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -128,14 +226,19 @@ const Home =() => {
     className="bg-black text-white"
     variant="default"
     color="black"
+    onClick={()=>{Calculate()}}
     >Calculate</Button>
   </div>
 
-    <div className='w-full h-screen justify-between items-center'>
-      <canvas ref={canvasRef} id='canvas' className='w-full min-h-screen'
+    <div className='w-full max-h-screen justify-between items-center'>
+      <canvas ref={canvasRef} id='canvas' className='w-full min-h-screen overflow-hidden'
             onMouseDown={startDrawing}
             onMouseUp={stopDrawing}
-            onMouseMove={draw}></canvas>
+            onMouseMove={draw}
+            onMouseLeave={stopDrawing}
+            onTouchStart={startDrawingTouch}
+            onTouchMove={drawTouch}
+            onTouchEnd={stopDrawingTouch}></canvas>
     </div>
   </>    
   );

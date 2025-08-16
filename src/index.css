@@ -1,3 +1,13 @@
 
 @import "tailwindcss";
 
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* prevents scrollbars entirely */
+}
+
+canvas {
+  touch-action: none;
+  user-select: none;
+}
