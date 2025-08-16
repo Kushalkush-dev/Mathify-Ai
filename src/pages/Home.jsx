@@ -136,6 +136,7 @@ const Calculate= async ()=>{
       const ctx=canvas.getContext('2d')
       if(ctx){
         ctx.clearRect(0,0,canvas.width,canvas.height)
+        setsolution("")
       }
     }
   }
@@ -196,16 +197,6 @@ const stopDrawingTouch = (e) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
   return(
   <>
   <div>
@@ -213,13 +204,13 @@ const stopDrawingTouch = (e) => {
     <Button onClick={()=>{
       setreset(true)
     }}
-    className="bg-black text-white"
+    className=" text-white bg-red-500 w-[35vw]"
     variant="default"
     color="black"
     >Reset</Button>
     
 
-    <button onClick={eraser} className='bg-blue-400 px-3 text-white'>
+    <button onClick={eraser} className='bg-blue-500 px-3 text-white rounded-2xl'>
       Eraser
     </button>
     <Group className=''>
@@ -234,11 +225,11 @@ const stopDrawingTouch = (e) => {
     </Group>
 
     <Button
-    className="bg-black text-white"
+    className="bg-green-400 text-white w-[35vw] "
     variant="default"
     color="black"
     onClick={()=>{Calculate()}}
-    >Calculate</Button>
+    ><span className='font-bold'>Calculate</span></Button>
   </div>
 
   
@@ -254,14 +245,17 @@ const stopDrawingTouch = (e) => {
             onTouchEnd={stopDrawingTouch}></canvas>
     </div>
 
-    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 
+    {solution && (
+      <div className="fixed bottom-4 left-1/2 -translate-x-1/2 
                 bg-gray-700 text-white text-xl px-4 py-2 
                 rounded-lg shadow-lg z-50">
                   
       <MathJax>
         {solution}
       </MathJax>
-    </div>
+    </div>)}
+    
+    
 
 
   </div>
