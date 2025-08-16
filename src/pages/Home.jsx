@@ -3,8 +3,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import Colors from '../assets/brushColors.js'
 
 import { ColorSwatch, Group } from '@mantine/core';
+import '@mantine/core/styles.css';
 
 import { Button } from '@/components/ui/button';
+
+
 
 const Home =() => {
 
@@ -94,7 +97,7 @@ const Home =() => {
   return(
   <>
 
-  <div className='grid grid-cols-3 gap-2'>
+  <div className='grid grid-cols-3 gap-2 bg-black'>
     <Button onClick={()=>{
       setreset(true)
     }}
@@ -104,12 +107,13 @@ const Home =() => {
     >Reset</Button>
     
     <Group className='z-50'>
-      {Colors.map((bcolor)=>(
-        <ColorSwatch
-          color={bcolor}
-          key={bcolor}
-          style={{ border: '2px solid white', cursor: 'pointer' }}
-          onClick={()=>{setbrushcolor(bcolor)}}/>
+       {Colors.map((color) => (
+          <ColorSwatch
+            key={color}
+            color={color}
+            style={{ border: '2px solid white', cursor: 'pointer' }}
+            onClick={() => setbrushcolor(color)}
+          />
       ))}
     </Group>
 
@@ -121,7 +125,7 @@ const Home =() => {
   </div>
 
     <div className='w-full h-screen justify-between items-center'>
-      <canvas ref={canvasRef} id='canvas' className='w-full h-full z-0'
+      <canvas ref={canvasRef} id='canvas' className='w-full min-h-screen'
             onMouseDown={startDrawing}
             onMouseUp={stopDrawing}
             onMouseMove={draw}></canvas>
