@@ -17,7 +17,7 @@ const Home =() => {
   const [isdrawing, setisdrawing] = useState(false);
   const [reset, setreset] = useState(false)
   const [brushcolor, setbrushcolor] = useState("white")
-  const [solution, setsolution] = useState('')
+  const [solution, setsolution] = useState("")
 
 
 
@@ -31,7 +31,10 @@ const Home =() => {
     
   },[reset])
 
-
+useEffect(()=>{
+  console.log(solution);
+  
+},[solution])
 
 
   useEffect(()=>{
@@ -107,6 +110,8 @@ const Calculate= async ()=>{
       const data=await response.json()
       console.log(data.answer);
       setsolution(data.answer)
+      
+      
         
       } catch (error) {
         console.log("Unable to fetch from api",error);
@@ -252,8 +257,9 @@ const stopDrawingTouch = (e) => {
     <div className="fixed bottom-4 left-1/2 -translate-x-1/2 
                 bg-red-400 text-white text-xl px-4 py-2 
                 rounded-lg shadow-lg z-50">
-  hello
-</div>
+                  
+      hello
+    </div>
 
 
   </div>
