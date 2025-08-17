@@ -200,20 +200,21 @@ const stopDrawingTouch = (e) => {
   return(
   <>
   <div>
-    <div className='flex justify-evenly bg-black'>
+    <div className='flex justify-start gap-5 items-center bg-black'>
     <Button onClick={()=>{
       setreset(true)
     }}
-    className=" text-white bg-red-500 w-[35vw]"
+    className=" text-white bg-red-500 w-[35vw] hover:bg-red-700 active:scale-90"
     variant="default"
     color="black"
     >Reset</Button>
     
 
-    <button onClick={eraser} className='bg-blue-500 px-3 text-white rounded-2xl'>
+    <button onClick={eraser} className='bg-blue-500 px-2 text-white rounded-2xl'>
       Eraser
     </button>
-    <Group className=''>
+   
+      <Group className='' wrap=''>
        {Colors.map((color) => (
           <ColorSwatch
             key={color}
@@ -224,8 +225,10 @@ const stopDrawingTouch = (e) => {
       ))}
     </Group>
 
+    
+    
     <Button
-    className="bg-green-400 text-white w-[35vw] "
+    className="bg-green-500 text-white w-[35vw] cursor-pointer hover:bg-green-600 active:scale-90  "
     variant="default"
     color="black"
     onClick={()=>{Calculate()}}
