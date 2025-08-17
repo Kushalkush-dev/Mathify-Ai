@@ -200,19 +200,27 @@ const stopDrawingTouch = (e) => {
   return(
   <>
   <div>
-    <div className='flex justify-start gap-5 items-center bg-black'>
-    <Button onClick={()=>{
-      setreset(true)
-    }}
-    className=" text-white bg-red-600 w-[35vw] hover:bg-red-700 active:scale-90"
-    variant="default"
-    color="black"
-    ><span className='font-medium'>Reset</span></Button>
-    
+    <div className='flex justify-around gap-5 items-center bg-black'>
 
-    <button onClick={eraser} className='hover:opacity-80 active:scale-90'>
-    <img src="eraser-Icon.png" alt="eraserlogo" width={"50px"} />
+    <div>
+    <button onClick={()=>{
+      setreset(true)
+    }} className="relative active:scale-90 inline-flex items-center justify-center p-0.5 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-800 to-red-600 group-hover:from-red-500 group-hover:to-red-600 hover:text-white dark:text-white focus:outline-none">
+    <span className="relative  px-[14vw] py-1.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent">
+    Reset
+    </span>
     </button>
+
+
+    </div>
+
+    <div>
+        <button onClick={eraser} className='hover:opacity-80 active:scale-90'>
+        <img src="eraser-Icon.png" alt="eraserlogo" width={"48px"} />
+        </button>
+
+    </div>
+
    <div>
       <Group className='' wrap=''>
        {Colors.map((color) => (
@@ -227,14 +235,18 @@ const stopDrawingTouch = (e) => {
 
    </div>
     
+    <div>
+   <button onClick={Calculate} className="relative active:scale-90 inline-flex items-center justify-center p-0.5  me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white  focus:outline-none ">
+    <span className="relative px-[14vw] py-1.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent">
+    Calculate
+    </span>
+  </button>
+
+    </div>
     
     
-    <Button
-    className="bg-green-500 text-white w-[35vw] cursor-pointer hover:bg-green-600 active:scale-90  "
-    variant="default"
-    color="black"
-    onClick={()=>{Calculate()}}
-    ><span className='font-bold'>Calculate</span></Button>
+
+
   </div>
 
   
