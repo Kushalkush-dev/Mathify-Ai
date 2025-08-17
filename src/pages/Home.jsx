@@ -204,10 +204,10 @@ const stopDrawingTouch = (e) => {
     <Button onClick={()=>{
       setreset(true)
     }}
-    className=" text-white bg-red-500 w-[35vw] hover:bg-red-700 active:scale-90"
+    className=" text-white bg-red-600 w-[35vw] hover:bg-red-700 active:scale-90"
     variant="default"
     color="black"
-    >Reset</Button>
+    ><span className='font-medium'>Reset</span></Button>
     
 
     <button onClick={eraser} className='hover:opacity-80 active:scale-90'>
