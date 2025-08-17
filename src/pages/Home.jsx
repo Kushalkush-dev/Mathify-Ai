@@ -7,6 +7,7 @@ import '@mantine/core/styles.css';
 
 import { Button } from '@/components/ui/button';
 import { MathJax, MathJaxContext } from 'better-react-mathjax';
+import DiscreteSlider from '@/components/ui/slider.jsx';
 
 
 
@@ -18,6 +19,7 @@ const Home =() => {
   const [reset, setreset] = useState(false)
   const [brushcolor, setbrushcolor] = useState("white")
   const [solution, setsolution] = useState("")
+  const [brushsize, setbrushsize] = useState(2)
 
 
 
@@ -47,11 +49,23 @@ useEffect(()=>{
         canvas.width = rect.width;
         canvas.height = rect.height;
         ctx.lineCap='round';
-        ctx.lineWidth=3
+        ctx.lineWidth=brushsize
        
       }
     }
   },[])
+
+
+useEffect(()=>{
+  const canvas=canvasRef.current;
+  if(canvas){
+    const ctx=canvas.getContext('2d');
+    if(ctx){
+      ctx.lineWidth=brushsize
+    }
+  }
+},[brushsize])
+
 
   const startDrawing = (e)=>{
     e.preventDefault()
@@ -125,6 +139,13 @@ const Calculate= async ()=>{
 }
 
 
+const sliderChange=(event,newvalue)=>{
+
+  setbrushsize(newvalue)
+
+
+
+}
 
   const eraser = ()=>{
   setbrushcolor('black')
@@ -206,7 +227,7 @@ const stopDrawingTouch = (e) => {
     <button onClick={()=>{
       setreset(true)
     }} className="relative active:scale-90 inline-flex items-center justify-center p-0.5 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-800 to-red-600 group-hover:from-red-500 group-hover:to-red-600 hover:text-white dark:text-white focus:outline-none">
-    <span className="relative  px-[14vw] py-1.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent">
+    <span className="relative font-sans font-semibold px-[14vw] py-1.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent">
     Reset
     </span>
     </button>
@@ -237,7 +258,7 @@ const stopDrawingTouch = (e) => {
     
     <div>
    <button onClick={Calculate} className="relative active:scale-90 inline-flex items-center justify-center p-0.5  me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white  focus:outline-none ">
-    <span className="relative px-[14vw] py-1.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent">
+    <span className="relative font-semibold font-sans px-[14vw] py-1.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent">
     Calculate
     </span>
   </button>
@@ -249,6 +270,11 @@ const stopDrawingTouch = (e) => {
 
   </div>
 
+  <div className='bg-black absolute left-[3vw] top-[30vh]'>
+      <DiscreteSlider brushvalue={brushsize} slidervalue={sliderChange}/>
+  </div>
+
+    
   
 
     <div className='w-full max-h-screen justify-between items-center'>
