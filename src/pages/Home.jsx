@@ -210,21 +210,23 @@ const stopDrawingTouch = (e) => {
     >Reset</Button>
     
 
-    <button onClick={eraser} className='bg-blue-500 px-2 text-white rounded-2xl'>
-      Eraser
+    <button onClick={eraser} className='hover:opacity-80 active:scale-90'>
+    <img src="eraser-Icon.png" alt="eraserlogo" width={"50px"} />
     </button>
-   
+   <div>
       <Group className='' wrap=''>
        {Colors.map((color) => (
           <ColorSwatch
             key={color}
             color={color}
-            style={{ border: '2px solid white', cursor: 'pointer' }}
+            style={{ border: '2px solid gray', cursor: 'pointer' }}
             onClick={() => setbrushcolor(color)}
           />
       ))}
     </Group>
 
+   </div>
+    
     
     
     <Button
