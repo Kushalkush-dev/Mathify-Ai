@@ -88,7 +88,7 @@ Example:
 ![Mathify AI Screenshot](./public/pg2.png)
 ![Mathify AI Screenshot](./public/pg3.png)
 ![Mathify AI Screenshot](./public/pg5.png)
-
+![Mathify AI Screenshot](./public/pg6.png)
 ---
 
 ## 🤝 Contributing
