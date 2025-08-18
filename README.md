@@ -85,8 +85,9 @@ Mathify-Ai/
 ## 🎥 Demo / Screenshots
 
 Example:  
-![Mathify AI Screenshot](./public/pg1.png)
 ![Mathify AI Screenshot](./public/pg2.png)
+![Mathify AI Screenshot](./public/pg3.png)
+![Mathify AI Screenshot](./public/pg5.png)
 
 ---
 
