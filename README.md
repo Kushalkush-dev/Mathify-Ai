@@ -83,7 +83,7 @@ Mathify-Ai/
 ---
 
 ## 🎥 Demo / Screenshots
-> Add screenshots or a demo video link here for better presentation.  
+
 Example:  
 ![Mathify AI Screenshot](./public/demo.png)
 
