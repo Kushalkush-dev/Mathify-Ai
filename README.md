@@ -11,8 +11,8 @@ This project was built as part of an academic submission and demonstrates the fu
 - ✍️ **Canvas Drawing** – Write math problems by hand directly on the app.  
 - 🤖 **AI-Powered Solver** – Problems are interpreted and solved using an AI API.  
 - 🔢 **LaTeX Rendering** – Clean math formatting using **MathJax**.  
-- 🌓 **Dark Mode** – Seamless theme toggle for better user experience.  
-- 📱 **Responsive Design** – Works smoothly on desktop and mobile.  
+- 🌓 **Dark Mode** – Seamless theme toggle for better user experience.  (Futher Enhancement)
+- 📱 **Responsive Design** – Works smoothly on desktop and mobile.   (Futher Enhancement)
 - 🧮 **Step-by-Step Approach** *(optional future enhancement)*.
 
 ---
