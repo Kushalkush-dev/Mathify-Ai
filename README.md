@@ -66,7 +66,7 @@ Mathify-Ai/
    ```bash
    cd Backend
    npm install
-   node server.js
+   node server.js or npm run start
    ```
 
 5. **Run the frontend**
