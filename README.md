@@ -13,7 +13,7 @@ This project was built as part of an academic submission and demonstrates the fu
 - 🔢 **LaTeX Rendering** – Clean math formatting using **MathJax**.  
 - 🌓 **Dark Mode** – Seamless theme toggle for better user experience.  (Futher Enhancement)
 - 📱 **Responsive Design** – Works smoothly on desktop and mobile.   (Futher Enhancement)
-- 🧮 **Step-by-Step Approach** *(optional future enhancement)*.
+- 🧮 **Step-by-Step Approach** *(future enhancement)*.
 
 ---
 
