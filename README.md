@@ -21,7 +21,7 @@ This project was built as part of an academic submission and demonstrates the fu
 - **Frontend:** React, Vite, Tailwind CSS, MathJax  
 - **Backend:** Node.js, Express  
 - **AI API:** Google Gemini API (via `@google/genai`)  
-- **Other:** GSAP animations, Shadcn UI components  (Further additions)
+- **Other:** Shadcn UI components  (Further additions)
 
 ---
 
